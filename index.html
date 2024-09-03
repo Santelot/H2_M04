@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-4').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook - H2 - M04</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">
+            <span>📚 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Dar la bienvenida y preparar el ambiente</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Gnius Club"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Buenos días, jóvenes desarrolladores. Hoy continuamos nuestra aventura con Glide. Prepárense para aprender y personalizar sus aplicaciones.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.0 minutos): Proyectar Diapositiva 3 "¿Cómo están?" y aprovechar para medir el ánimo del grupo</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de sumergirnos en nuestro desarrollo con Glide, quiero saber cómo se sienten hoy. Si están emocionados por aprender algo nuevo, levanten las dos manos. Si están un poco cansados, crucen los brazos frente a su pecho.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 y guiar a los estudiantes a realizar el ritual de bienvenida</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Juntemos nuestras manos en agradecimiento por la oportunidad de aprender y crear algo nuevo hoy. Recordemos que estamos aquí para aprender y apoyarnos mutuamente.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy tenemos tres objetivos en nuestra misión: explorar el dashboard de Glide, conocer el editor y aprender a personalizar nuestras aplicaciones.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">
+            <span>📚 Actividad 2: Innovación del Día (3 pasos)</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Explorar una aplicación innovadora para la gestión de finanzas personales</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Innovación del Día"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de sumergirnos en Glide, quiero mostrarles una aplicación innovadora que está transformando la manera en que manejamos nuestras finanzas personales: YNAB (You Need a Budget). YNAB es una aplicación que nos ayuda a tomar el control de nuestro dinero, dándonos herramientas para presupuestar, rastrear gastos y ahorrar de manera eficiente.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.0 minutos): Proyectar Diapositiva 7 "Video de YNAB"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a ver un breve video que explica cómo YNAB puede ayudarnos a gestionar mejor nuestras finanzas personales. Presten atención a las características clave y piensen en cómo podrían utilizar algo similar en sus propios proyectos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2.0 minutos): Proyectar Diapositiva 8 "Características de YNAB"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, discutamos algunas de las características más impresionantes de YNAB. ¿Cómo creen que una herramienta como YNAB podría ayudarlos a gestionar mejor sus finanzas o proyectos?</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (14 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>📚 Actividad 3: Brain Gym (14 pasos)</span>
+            <span>⏰ Tiempo: 18.5 minutos</span>
+        </div>
+        <div class="subtitle">Explorar y personalizar aplicaciones en Glide</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 9 "Brain Gym"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos a sumergirnos en el uso del dashboard y el editor de Glide para personalizar nuestras aplicaciones. Vamos a iniciar sesión en Glide.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 10 "Dashboard de Glide"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Cuando inicien sesión en Glide, llegarán a su Dashboard. Aquí pueden acceder y organizar sus aplicaciones, gestionar equipos, actualizar la información de cuenta y facturación, y más. En la parte superior verán sus aplicaciones de Glide, en el medio el curso de introducción a Glide, y en la parte inferior, plantillas para empezar a construir y personalizar aplicaciones.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 11 "Organización de Apps y Equipos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Pueden organizar sus aplicaciones por orden de creación, alfabéticamente, o por estado (publicadas o borradores). También pueden crear carpetas para organizar mejor sus aplicaciones. Además, el Dashboard les permite gestionar miembros del equipo, invitar nuevos miembros y asignar roles de administrador.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 12 "Abrir Editor de Datos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Para explorar el Editor de Datos, seleccionen la aplicación que crearon en la clase pasada haciendo clic en su nombre en el Dashboard. Esto los llevará directamente al Editor de Datos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar Diapositiva 13 "Editor de Datos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El Editor de Datos en Glide tiene cuatro áreas principales: las tablas, las fuentes de datos, la cuadrícula de datos y la barra superior. Aquí pueden agregar, editar y sincronizar datos desde diferentes fuentes. Es una herramienta poderosa para gestionar la información que alimenta sus aplicaciones.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1.5 minutos): Proyectar Diapositiva 14 "Abrir Editor de Layout"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Para explorar el Editor de Layout, hagan clic en la pestaña "Layout" en la parte superior de la pantalla. Esto los llevará a la sección donde pueden diseñar y personalizar el aspecto de su aplicación.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1.5 minutos): Proyectar Diapositiva 15 "Editor de Layout"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El Editor de Layout se divide en cinco áreas principales: las pestañas, la pantalla, los datos, la vista previa del dispositivo y el panel de configuración. Aquí es donde realizarán la mayor parte del trabajo de diseño, agregando y configurando componentes para personalizar sus aplicaciones.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1.5 minutos): Proyectar Diapositiva 16 "Tipos de Pantallas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">En Glide, hay varios tipos de pantallas que pueden utilizar: pantallas de colección, pantallas personalizadas y pantallas de detalles. Cada tipo de pantalla tiene sus propias características y usos específicos. Por ejemplo, una pantalla de colección muestra todos los registros de una tabla, mientras que una pantalla de detalles muestra la información de un registro específico.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (1 minuto): Proyectar Diapositiva 17 "Personalización del Layout"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Pueden personalizar el layout de sus aplicaciones agregando y configurando componentes en las pantallas. Utilicen la vista previa del dispositivo para ver cómo se verá su aplicación en diferentes dispositivos. La configuración de cada componente se puede ajustar en el panel de configuración a la derecha.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (1 minuto): Proyectar Diapositiva 18 "Action Editor"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El Action Editor les permite crear acciones complejas y gestionar todas las acciones dentro de su aplicación. Pueden integrar servicios de terceros como Slack, Microsoft Outlook, Zapier, y más. Esto les da la capacidad de automatizar tareas y conectar su aplicación con otros servicios.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (1 minuto): Proyectar Diapositiva 19 "Pantallas de Colección"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Las pantallas de colección muestran todos los registros de una tabla. Por ejemplo, si tienen una tabla de productos, una pantalla de colección mostrará todos los productos en un formato de lista o galería. Pueden personalizar el diseño y los filtros para mostrar la información de la manera más útil.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (1 minuto): Proyectar Diapositiva 20 "Pantallas Personalizadas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Las pantallas personalizadas les permiten diseñar el layout exactamente como lo deseen. Pueden combinar diferentes componentes como imágenes, texto, botones y gráficos para crear una experiencia única para los usuarios.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 13 (1 minuto): Proyectar Diapositiva 21 "Configuración de Componentes"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Cada componente en el Editor de Layout se puede configurar para ajustar su apariencia y comportamiento. Pueden cambiar el texto, el tamaño, los colores, y agregar acciones a los componentes para que respondan a las interacciones del usuario.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 14 (1.5 minutos): Proyectar Diapositiva 22 "Vista Previa del Dispositivo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">La vista previa del dispositivo les permite ver cómo se verá su aplicación en diferentes dispositivos como teléfonos, tabletas y computadoras. Es importante probar la aplicación en varios dispositivos para asegurarse de que el diseño sea responsivo y funcione bien en todos los tamaños de pantalla.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (5 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>📚 Actividad 4: State Change (5 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Activación física para recargar energías</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 23 "State Change"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a tomar un pequeño descanso para activar nuestro cuerpo y mente. Haremos una breve actividad física para recargarnos de energía y prepararnos para el desafío que viene.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 24 "La Estrella"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos a realizar un ejercicio de equilibrio llamado "La Estrella". Este ejercicio nos ayudará a mejorar nuestra concentración y equilibrio. Párense con los pies juntos y levanten los brazos hacia los lados para formar una "T". Luego, levanten una pierna y extiéndanla hacia un lado, manteniendo la posición por 10 segundos. Cambiaremos de pierna después.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 25 "Realizar La Estrella"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a empezar con la pierna derecha. Levanten la pierna derecha y manténganla estirada hacia un lado durante 10 segundos. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. ¡Muy bien! Ahora cambiemos a la pierna izquierda. Levanten la pierna izquierda y manténganla estirada hacia un lado durante 10 segundos. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. ¡Excelente!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 26 "Repetir La Estrella"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos a repetir el ejercicio, pero cambiando de pierna más rápidamente. Levanten la pierna derecha y luego la izquierda, manteniendo el equilibrio por 5 segundos en cada lado. 1, 2, 3, 4, 5. Cambien. 1, 2, 3, 4, 5. Cambien. ¡Muy bien!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 27 "Conclusión State Change"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Excelente, ahora estamos listos y llenos de energía y enfoque para continuar con nuestra misión. ¡Buen trabajo a todos!</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5 (2 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>📚 Actividad 5: Team Gnius (2 pasos)</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Formación de parejas para el siguiente reto</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 28 "Team Gnius"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El reto que nos toca estos días se va hacer en parejas. Así que les voy a dar 30 segundos para que decidan con quién van a trabajar.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 29 "Cronómetro de 30 segundos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6 (10 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>📚 Actividad 6: Challenge (10 pasos)</span>
+            <span>⏰ Tiempo: 19 minutos</span>
+        </div>
+        <div class="subtitle">Personalizar la aplicación en Glide</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 30 "Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora que ya conocemos el Dashboard y el Editor de Glide, vamos a personalizar nuestra aplicación. El desafío de hoy es revisar los datos que utiliza nuestra aplicación realizada con IA y personalizarla.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 31 "Revisar Datos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Una vez en el Editor de Datos, revisen los datos que la aplicación está utilizando. Asegúrense de entender qué información está siendo mostrada y cómo está organizada.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 32 "Añadir Columna"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, vamos a añadir una nueva columna a una de las tablas. Por ejemplo, si tienen una tabla de usuarios con nombre, correo y género, pueden añadir una columna con la edad del cliente.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 33 "Abrir Editor de Layout"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Una vez que hayan añadido la nueva columna, hagan clic en la pestaña "Layout" para comenzar a personalizar la apariencia de su aplicación.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 34 "Modificar Fields"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">En el Editor de Layout, seleccionen la pantalla donde se muestran los datos de la tabla que editaron. Luego, en el menú de la izquierda, seleccionen "Fields" y añadan la nueva columna que crearon para que se muestre en la aplicación.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 35 "Trabajo en Equipo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Trabajen en equipo para realizar estos cambios y explorar otras funcionalidades del Editor de Datos y del Editor de Layout. Tienen 10 minutos para trabajar en esto. Adelante.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (10 minutos): Proyectar Diapositiva 36 "Cronómetro"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (3 minutos): Proyectar Diapositiva 37 "Compartir Trabajo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, dos equipos voluntarios presentarán brevemente los cambios y personalizaciones que hicieron en su aplicación. ¿Quién quiere compartir primero?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (0.5 minutos): Proyectar Diapositiva 38 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Excelente trabajo a todos! Hemos revisado y personalizado nuestra aplicación. Repasemos rápidamente los objetivos que logramos hoy: <br> 1. Explorar el dashboard de Glide. <br> 2. Conocer el editor de Glide. <br> 3. Personalizar nuestra aplicación añadiendo y mostrando una nueva columna de datos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (0.5 minutos): Proyectar Diapositiva 39 "You've got mon-e" y celebra con los genios</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7 (3 pasos) -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>📚 Actividad 7: Easter Egg (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Evaluación de atención y otorgamiento de Mon-e</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 40 "Easter Egg"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Llegó el momento de regalar mon-e! Vamos a ver quién puso atención durante la clase. La siguiente diapositiva tiene una pregunta sobre algo que mencionamos en la parte de Innovación del Día. Voy a darle mon-e a las tres primeras personas que me den la respuesta correcta. La dinámica será así: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Si alguien dice la respuesta en voz alta, pierden todos. Solo levanten la mano. Cuando yo les pregunte, me darán la respuesta al oído. ¿Listos?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 41 "Pregunta Easter Egg"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Uno, dos, tres. <br> La pregunta es: ¿Cuál era el nombre de la aplicación innovadora que vimos hoy en Innovación del Día?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 42 "Respuestas Easter Egg"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Uno, ven y dime la respuesta al oído. <br> Ahora tú, dos. <br> Ahora tú, tres. <br> La respuesta correcta es "You Need A Budget". Muy bien, los ganadores reciben mon-e. ¡Buen trabajo a todos!</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8 (1 paso) -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>📚 Actividad 8: Honor de Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Cerrar la clase y preparar el espacio para el próximo grupo</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 43 y reproducir la animación de honor de dojo</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Recuerden cerrar sus sillas, recoger sus cosas y acomodar el laboratorio para que pueda recibir la siguiente tanda de genios.</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+</body>
+</html>
